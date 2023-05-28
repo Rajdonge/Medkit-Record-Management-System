@@ -1,0 +1,50 @@
+body{
+    background-color: #67c3d0;
+}
+.saleClass {
+    width: 370px;
+    height: 300px;
+    background-color: #485264;
+    margin-left: 500px;
+    margin-top: 100px;
+    border-radius: 7px;
+}
+.sP {
+    padding-top: 30px;
+    text-align: center;
+    color: #67c3d0;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+.qty {
+    padding-top: 50px;
+    padding-left: 97px;
+}
+.saleqty {
+    height: 30px;
+    border-radius: 5px;
+}
+.salelbl {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: #67c3d0;
+}
+#saleBtn {
+    margin-top: 30px;
+    margin-left: 128px;
+    width: 100px;
+    background-color: #67c3d0;
+    color: #485264;
+    font-family: sans-serif;
+    font-size: 18px;
+    border-radius: 5px;
+
+}
+
+#saleBtn:hover {
+    background-color: red;
+    color: green;
+    cursor: pointer;
+    font-weight: bold;
+}

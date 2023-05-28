@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'statics/style/signup.css' %}" />
+
+    
+    {% for msgs in messages %}
+    <h2 style="text-align: center; color: green;">{{msgs}}</h2>
+    {% endfor %}
+
+    <div class="create">
+      <img class="icon" src="{% static 'statics/images/key.png' %}" alt="">
+      <h4 class="cTitle">Staff Registration Form</h4>
+      <div class="cInput" id="error">
+        <form action="/createpage" method="POST" id="form">
+          {% csrf_token %}
+          <div class="usern">
+            <input type="text" placeholder="username" id="username" name="username" class="username" required />
+          </div>
+          <input type="text" placeholder="First Name" id="fname" name="fname" class="fname" required />
+          <input type="text" placeholder="Last Name" id="lname" name="lname" class="lname" required />
+          <div class="emailPart">
+            <input type="email" placeholder="Email" id="email" name="email" class="email" required />
+          </div>
+          <div class="part1">
+            <input type="password" placeholder="Create password" id="pass1" name="pass1" required />
+          </div>
+          <div class="part2">
+            <input type="password" name="pass2" id="pass2" placeholder="Confirm password" required />
+          </div>
+          <!-- <div class="alBtn">
+            <a href="loginpage" class="alreadyBtn">Already have an account?</a>
+          </div> -->
+          <div class="signup">
+            <button type="submit" class="signBtn">Sign Up</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+{% endblock %}

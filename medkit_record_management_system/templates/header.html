@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <title>Medkit Record Management System</title>
+</head>
+<link rel="stylesheet" href="{% static 'statics/style/header.css' %}" />
+
+<body>
+  <div class="header">
+    <nav>
+      <ul>
+        <img src="{% static 'statics/images/logo-icon.png' %}" alt="logo" class="logo">
+        {% if request.user.is_authenticated %}
+        <li><a href="/">{{user.first_name}}</a></li>
+        {% else %}
+        <li><a href="/">home</a></li>
+        {% endif %}
+          <div class="title">
+            <p class="medkitTitle">Medkit Record Management System</p>
+          </div>
+          {% if request.user.is_authenticated %}
+          <div class="userlogout">
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </div>
+          <li><a href="/admin"><img src="{% static 'statics/images/setting-icon.svg' %}" alt="" class="setting"></a></li>
+        {% else %}
+        <div class="userlogin">
+          <li><a href="{% url 'loginpage' %}">Login</a></li>
+        </div>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</body>
+
+</html>

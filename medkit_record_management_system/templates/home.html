@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'statics/style/home.css' %}">
+
+<div class="logMsg">
+  <p class="loginsuccess" style="font-family: sans-serif; font-size: 20px; font-weight: bold;">
+{% for msg in messages %}
+Hi! {{request.user.first_name}}, {{msg}}
+{% endfor %}
+</p>
+
+
+
+
+<div class="background">
+  {% if request.user.is_authenticated %}
+  <div class="userInterface">
+    {% if request.user.is_staff %}
+    <a href="{% url 'createpage' %}" class="addStaff" style=" background-color: blue;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;">Add Staff</a>
+
+<a href="{% url 'addmedkits' %}" class="addMed">Add Medicines</a>
+  {% endif %}
+  <a href="{% url 'displaydata' %}" class="viewMed">View Medicines</a>
+</div>
+
+  {% else %}
+  <div class="para">
+      <p class="p">Medkit Record Management System is a Web Application to record the <br>
+        details of medicines like
+        Medicine Name,
+        Expiry
+        date, Quantity, <br> Marked price, Discount, Manufacturing company and Dealer.</p>
+    </div>
+    <img src="{% static 'statics/images/sthethoscope.png' %}" alt="sthethoscope" class="image">
+  
+  {% endif %}
+
+{% endblock %}

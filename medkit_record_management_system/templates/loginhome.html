@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+
+<body>
+
+  <div class="main">
+    <nav>
+      <ul>
+        <img src="{% static 'statics/images/logo-icon.png' %}" alt="logo" class="logo">
+        <li><a href="{% url 'landingpageview' %}">home</a></li>
+        <div class="title">
+          <div class="medkit">
+            <li><a href="">Medkit</a></li>
+          </div>
+          <div class="record">
+            <li><a href="">Record</a></li>
+          </div>
+          <div class="management">
+            <li><a href="">Management</a></li>
+          </div>
+          <div class="system">
+            <li><a href="">System</a></li>
+          </div>
+
+          <div class="logout">
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </div>
+      </ul>
+    </nav>
+  </div>
+
+
+
+  <div class="mx-auto col-10 col-md-8 col-lg-10">
+    <form method="get">
+      <h5 style="color: black; margin-top: 40px;">Total Records: {{total_records}}</h5>
+      <input type="text" name="servicename" placeholder="Search" style="margin-left: 765px; margin-bottom: 50px;">
+      <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
+    </form>
+    {% csrf_token %}
+
+    {% if viewmed %}
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Medicine Name</th>
+          <th scope="col">Expiry Date</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Marked Price</th>
+          <th scope="col">Discount</th>
+          <th scope="col">Company</th>
+          <th scope="col">Dealer</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in viewmed %}
+        <tr>
+          <td>{{m.medicine_name}}</td>
+          <td>{{m.expiry_date}}</td>
+          <td>{{m.quantity}}</td>
+          <td>{{m.marked_price}}</td>
+          <td>{{m.discount}}</td>
+          <td>{{m.company}}</td>
+          <td>{{m.dealer}}</td>
+          <td>
+            <a href="{% url 'updatedata' m.id %}" class="btn btn-success">EDIT</a>
+            <form action="{% url 'deletedata' m.id%}" method="POST" class="d-inline">
+              {% csrf_token %}
+              <input type="submit" value="DELETE" class="btn btn-danger">
+            </form>
+            <form action="salepageview" method="POST" class="d-inline">
+              {% csrf_token %}
+              <button class="btn btn-warning" type="submit">Sale</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <h4>No Records</h4>
+    {% endif %}
+  </div>
+
+  </div>
+
+</html>

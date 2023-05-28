@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+  <title>Add Medkits</title>
+  <link rel="stylesheet" href="{% static 'statics/style/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statics/style/addmedkit.css' %}">
+
+ 
+
+  {% for m in messages %}
+  <h2 style="text-align: center; color: green;"> {{m}}!</h2>
+
+  {% endfor %}
+
+
+
+  <div class="row">
+    <div class="mx-auto col-10 col-md-8 col-lg-6">
+      <h4 class="text-center alert alert-info">Add Medicines</h4>
+      <form action="" method="POST" class="d-inline">
+        {% csrf_token %}
+      
+        {{form.as_p}}
+        <div class="btns">
+          <input type="submit" class="btn btn-success" value="ADD">
+          <a href="{% url 'displaydata' %}" target="_blank" class="btn btn-primary">DISPLAY</a>
+          <button type="submit" onclick="clearData()" class="btn btn-danger">CLEAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="{% static 'statics/js/clearFunc.js' %}">
+
+  </script>
+  <style>
+    .btns {
+      padding-bottom: 50px;
+    }
+  </style>
+
+{% endblock %}

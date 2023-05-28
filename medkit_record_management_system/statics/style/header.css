@@ -1,0 +1,65 @@
+.header > nav > ul> .logo{
+    height: 140px;
+}
+
+
+.header > nav > ul > .title{
+    display: flex;
+    margin-left: 200px;
+}
+
+.header > nav > ul > .title > .medkitTitle {
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #485264;
+}
+
+.header > nav > ul{
+    display: flex;
+    list-style-type: none;
+    text-decoration: none;
+    height: 150px;
+    align-items: center;
+}
+.header > nav > ul > li > a{
+    text-decoration: none;
+    color: white;
+    background-color: #485264;
+    padding: 5px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+.header > nav > ul > .userlogin > li > a {
+    text-decoration: none;
+    color: white;
+    background-color: #485264;
+    padding: 5px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.userlogout > li > a {
+    text-decoration: none;
+    color: white;
+    background-color: #485264;
+    padding: 5px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.header > nav > ul > .userlogin, .userlogout {
+    margin-left: 280px;
+    
+}
+
+.set > .setting {
+    height: 50px;
+    width: 40px;
+}

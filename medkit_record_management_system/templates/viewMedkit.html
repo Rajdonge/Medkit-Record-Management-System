@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+  <title>Medicine Records</title>
+  <link rel="stylesheet" href="{% static 'statics/style/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statics/style/viewmedkit.css' %}">
+  <script>
+
+
+    var delMedkit = null;
+    function showDeleteDialouge(id){
+      delMedkit = id;
+      document.getElementByID("delete-dialogue").style.display="block";
+    }
+
+    function hideDialouge(){
+      delMedkit = null;
+      document.getElementById("delete-dialogue").style.display="none";
+    }
+
+    function deleteMed(){
+      if(delMedkit){
+        var formId = "deleteForm" + delMedkit;
+        document.getElementById(formId).submit(); 
+      }
+
+    }
+  
+  </script>
+
+
+
+
+  {%for m in messagebox %}
+  {{m}}
+  {% endfor %}
+
+  <div class="mx-auto col-12">
+    <form method="get">
+      <h5 style="color: black; margin-top: 40px;">Total Records: {{total_records}}</h5>
+      <input type="text" name="servicename" placeholder="Search" style="margin-left: 765px; margin-bottom: 50px;">
+      <input class="btn btn-success" type="submit" value="Search">
+    </form>
+    {% csrf_token %}
+
+    {% for m in messages %}
+    <h4>{{m}}</h4>
+    {% endfor %}
+
+    {% if viewmed %}
+
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Medicine Name</th>
+          <th scope="col">Expiry Date</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Marked Price</th>
+          <th scope="col">Detail</th>
+          <th scope="col">Company</th>
+          <th scope="col">Dealer</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in viewmed %}
+        <tr>
+          <td>{{m.medicine_name}}</td>
+          <td>{{m.expiry_date}}</td>
+          <td>{{m.quantity}}</td>
+          <td>{{m.marked_price}}</td>
+          <td>{{m.description}}</td>
+          <td>{{m.company}}</td>
+          <td>{{m.dealer}}</td>
+          <td>
+            {% if request.user.is_staff %}
+            <a href="{% url 'updatedata' m.id %}" class="btn btn-warning">EDIT</a>
+              
+            <a href="{% url 'deletedata' m.id %}" class="btn btn-danger">DELETE</a>
+              {% endif %}
+            </form>
+
+            {% if request.user.is_staff %}
+            <form method="POST" class="d-inline">
+              {% csrf_token %}
+              <a href="{% url 'adddata' m.id %}" class="btn btn-success">ADD</a>
+              {% endif %}
+            </form>
+
+            {% if not request.user.is_staff %}
+            <form method="POST" class="d-inline">
+              {% csrf_token %}
+              <a href="{% url 'saledata' m.id %}" class="btn btn-primary">SALE</a>
+            </form>
+            {% endif %}x
+          </td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+    {% else %}
+    <h4>No Records</h4>
+    {% endif %}
+  </div>
+
+  </div>
+
+  
+
+{% endblock %}

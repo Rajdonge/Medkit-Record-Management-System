@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+    <title>Update Medkit Details</title>
+    <link rel="stylesheet" href="{% static 'statics/style/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'statics/style/update.css' %}">
+
+
+
+    <div class="row">
+    </div>
+    <div class="mx-auto col-10 col-md-8 col-lg-6" offset-2>
+        <h4 class="alert alert-info">Update Medkit Information</h4>
+        {% for m in messages %}
+        <h4 style="text-align: center; color: green;">{{m}}</h4>
+        {% endfor %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="UPDATE">
+            <a href="{% url 'displaydata' %}" class="btn btn-warning">BACK</a>
+        </form>
+    </div>
+    </col-sm-8>
+    </div>
+
+    {% endblock %}

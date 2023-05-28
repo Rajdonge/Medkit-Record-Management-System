@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'statics/style/login.css' %}" />
+
+    
+
+  {% for ms in messages %}
+  <h4 style=" text-align: center; font-family: sans-serif;">{{ms}}</h4>
+
+  {% endfor %}
+
+  <div class="login">
+    <img class="icon" src="{% static 'statics/images/key.png' %}" alt="icon">
+    <h4 class="logTitle">Login your account</h4>
+    <div class="logInput">
+      <form action="{% url 'loginpage' %}" method="POST">
+        {% csrf_token %}
+        <div class="user">
+          <input type="text" placeholder="Username" name="username" id="username" class="username" required />
+        </div>
+        <div class="pass">
+          <input type="password" placeholder="Password" name="password" id="pass1" class="pass1" required />
+        </div>
+        <!-- <div class="createBtn">
+          <a href="createpage" class="create">Create your account</a>
+        </div> -->
+        <div class="loginBtn">
+          <button type="submit" class="log">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

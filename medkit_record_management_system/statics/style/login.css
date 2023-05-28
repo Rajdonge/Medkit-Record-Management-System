@@ -1,0 +1,69 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #67c3d0;
+}
+
+.login > .icon {
+    height: 50px;
+    margin-left: 200px;
+    margin-top: 25px;
+}
+
+.login {
+    margin: 40px 435px;
+    background-color: #485264;
+    width: 450px;
+    height: 500px;
+    border-radius: 20px;
+}
+.logTitle{
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+.logInput{
+    padding-top: 90px;
+    padding-left: 98px;
+}
+.pass1, .username{
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.pass{
+    padding-top: 30px;
+}
+.createBtn{
+    padding-top: 10px;
+}
+.create{
+    border: none; 
+    color: white; 
+    padding-top: 10px;
+}
+.create:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: red;
+}
+.loginBtn{
+    padding-top: 50px;
+    padding-left: 53px;
+}
+.log{
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.log:hover{
+    cursor: pointer;
+    color: #67c3d0;
+}
